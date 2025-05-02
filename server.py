@@ -1,7 +1,11 @@
 import socket
+from dotenv import load_dotenv
+import os
 
-HOST = '127.0.0.1'  # Localhost
-PORT = 65432        # Port to listen on
+load_dotenv()  
+
+HOST = os.getenv("SERVER_HOST")
+PORT = int(os.getenv("PORT")) 
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
